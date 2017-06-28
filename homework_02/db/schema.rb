@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20170626085558) do
     t.string   "author"
     t.string   "genre"
     t.string   "classification"
-    t.string   "type"
+    t.string   "prose"
     t.integer  "year"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false

@@ -1,0 +1,8 @@
+
+
+prose:
+  faker:
+    name:
+      prose: [
+      "Fiction", "Nonfiction"
+      ]
