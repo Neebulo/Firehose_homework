@@ -6,4 +6,11 @@
   <p><%= @book.classification %></p>
   <p><%= @book.prose %></p>
   <p><%= @book.year %></p>
+
+  <div class="float-right">
+    <%= link_to 'Edit', edit_book_path(@book), class: 'btn btn-primary' %>
+  </div>
+
+
+
 </div>
