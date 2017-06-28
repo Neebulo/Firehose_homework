@@ -8,6 +8,14 @@ class BooksController < ApplicationController
   end
 
   def create
+    Book.create(place_params)
+    redirect_to root_path
+  end
+
+  private
+
+  def place_params
+    params.require(:book).permit(:title, :author, :genre, :classification, :prose, :year)
   end
 
   def show
