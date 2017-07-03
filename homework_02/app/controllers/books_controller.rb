@@ -1,6 +1,12 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.all
+    if params[:q]
+      # search for books with the given query string
+      @books = Book.where("title LIKE ? OR author LIKE ? OR classification LIKE ? OR genre LIKE ? OR prose LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
+    else
+      # return all books
+      @books = Book.all
+    end
   end
 
   def new
