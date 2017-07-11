@@ -10,6 +10,9 @@
 
 # refernce: Array#sample
 
+Book.destroy_all
+Author.destroy_all
+Authorship.destroy_all
 
 prose = [ 'Fiction', 'Nonfiction' ]
 
@@ -24,7 +27,7 @@ classification = [
 50.times do
   Book.create(
     title:          Faker::Book.title,
-    author:         Faker::Book.author,
+    sub_title:      Faker::Book.title,
     genre:          Faker::Book.genre,
     classification: classification.sample,
     prose:          prose.sample,
@@ -32,3 +35,17 @@ classification = [
   )
 end
 
+25.times do
+  Author.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    age:           Faker::Number.between(15, 100)
+    )
+end
+
+books = Book.all 
+author_ids = Author.pluck(:id)
+
+books.each do | book |
+  Authorship.create(book_id: book.id, author_id:  author_ids.sample)
+end
