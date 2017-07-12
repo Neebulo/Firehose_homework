@@ -2,11 +2,11 @@ class BooksController < ApplicationController
   def index
     if params[:q]
       # search for books with the given query string
-      @books = Book.where("title LIKE ? OR author LIKE ? OR classification LIKE ? OR genre LIKE ? OR prose LIKE ? OR year LIKE ?", 
-                          "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
+      @books = Book.includes(:authors).where("title LIKE ? OR authors.first_name LIKE ? OR authors.last_name LIKE ? OR classification LIKE ? OR genre LIKE ? OR prose LIKE ? OR sub_title LIKE ?", 
+                          "%#{params[:q]}%", "%#{params[:q]}%",  "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
     else
       # return all books
-      @books = Book.all
+      @books = Book.includes(:authors)
     end
   end
 
@@ -42,6 +42,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :author, :genre, :classification, :prose, :year)
+    params.require(:book).permit(:title, :genre, :classification, :prose, :year)
   end
 end
