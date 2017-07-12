@@ -65,5 +65,7 @@ end
 # form to add books
 gem 'simple_form'
 
+# Authentication
+gem 'devise'
 
 
