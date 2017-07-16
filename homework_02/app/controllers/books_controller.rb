@@ -1,4 +1,7 @@
 class BooksController < ApplicationController
+
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
     if params[:q]
       # search for books with the given query string
@@ -15,7 +18,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    Book.create(book_params)
+    current_user.books.create(book_params)
     redirect_to root_path
   end
 
@@ -42,6 +45,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :genre, :classification, :prose, :year)
+    params.require(:book).permit(:title, :genre, :classification, :prose, :year, :sub_title)
   end
 end

@@ -8,5 +8,10 @@
     <p><%= book.classification %></p><br />
     <p><%= book.prose %></p><br />
     <p><%= book.year %></p><br />
+
+    <% if book.user.present? %>
+      <small><%= book.user.email %></small>
+    <% end %>
+
   </div>
 <% end %>

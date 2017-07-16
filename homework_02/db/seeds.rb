@@ -13,6 +13,7 @@
 Book.destroy_all
 Author.destroy_all
 Authorship.destroy_all
+User.destroy_all
 
 prose = [ 'Fiction', 'Nonfiction' ]
 
