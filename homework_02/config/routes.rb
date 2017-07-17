@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'catalogs/index'
+
   devise_for :users
   get 'authors/index'
 
