@@ -68,4 +68,7 @@ gem 'simple_form'
 # Authentication
 gem 'devise'
 
+# Pagination
+gem 'kaminari'
+
 

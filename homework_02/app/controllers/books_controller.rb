@@ -9,8 +9,14 @@ class BooksController < ApplicationController
                           "%#{params[:q]}%", "%#{params[:q]}%",  "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
     else
       # return all books
-      @books = Book.includes(:authors)
+      # @books = Book.includes(:authors)
+      @books = Book.includes(:authors).page(params[:page]).per(25)
     end
+
+
+  
+
+
   end
 
   def new
