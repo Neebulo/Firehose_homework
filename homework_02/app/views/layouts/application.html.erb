@@ -44,16 +44,8 @@
 
       </div>
 
-      <div class="search-bar">
-
-      <%= form_tag(root_path, method: "get") do %>
-        <%= label_tag(:q, "Search for:") %>
-        <%= text_field_tag(:q) %>
-        <%= submit_tag("Search") %>
-      <% end %>
-
-
     </nav>
+
 
     <% if notice.present? %>
       <p class="alert alert-info"><%= notice %></p>
@@ -61,8 +53,6 @@
     <% if alert.present? %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-
-
 
     <%= yield %>
   </body>
